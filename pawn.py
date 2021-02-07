@@ -2,6 +2,30 @@ from cell import Cell
 from settings import *
 
 
+class Position:
+    """
+    Class to define position
+    - x = line
+    - y = column
+    """
+
+    def __init__(self, x, y):
+        """ Constructor """
+        self.x = x
+        self.y = y
+
+    def euclidean(self, G):
+        """ Calculates the euclidean distance from own position to position G (goal) """
+        return ((self.x - G.x) ** 2 + (self.y - G.y) ** 2) ** 0.5
+
+    def __eq__(self, P):
+        return (self.x == P.x) and (self.y == P.y)
+
+    # TODO: fix the representation as (y,x) instead of (x,y) on print
+    def __str__(self):
+        return f"({self.x},{self.y})"
+
+
 class Pawn:
     """
     Class for each existing pawn in board
@@ -28,7 +52,7 @@ class Pawn:
 
     def is_valid_move(self, position, board):
         # position out of range
-        if self.is_inside(position, board):
+        if not self.is_inside(position, board):
             return False
 
         if self.has_owner(position, board):
@@ -41,15 +65,12 @@ class Pawn:
 
     def is_inside(self, position, board):
         """ Checks if new position is outside the range of the board """
-        if (
+        return not (
             position.x < 0
             or position.x >= board.size
             or position.y < 0
             or position.y >= board.size
-        ):
-            return True
-        else:
-            return False
+        )
 
     def has_owner(self, position, board):
         """ Checks if position on the board has been filled by another pawn """
@@ -79,6 +100,6 @@ class Pawn:
             return True
         return False
 
-    def print_pawn(self):
+    def __str__(self):
         """ Prints on terminal """
-        print("P.Owner: {} {}", self.pawn_owner, self.current_position)
+        return f"P (player {self.pawn_owner}): {self.current_position}"
