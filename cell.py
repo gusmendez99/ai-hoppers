@@ -1,9 +1,10 @@
 class Cell:
     """
     Class to represent every cell in board
-    - owner: 
+    - owner:
         0 if empty, 1 for player1 and 2 for player2
     """
+
     def __init__(self, owner):
         """ Cell constructor """
         self.owner = owner
@@ -12,4 +13,4 @@ class Cell:
         self.owner = owner
 
     def __str__(self):
-        return f'{self.owner}'
+        return f"{self.owner}"
