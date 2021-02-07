@@ -12,4 +12,4 @@ class Cell:
         self.owner = owner
 
     def __str__(self):
-        print(f'{self.owner}')
+        return f'{self.owner}'
