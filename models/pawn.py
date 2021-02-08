@@ -1,4 +1,4 @@
-from cell import Cell
+from models.cell import Cell
 from settings import *
 
 
@@ -74,7 +74,7 @@ class Pawn:
 
     def has_owner(self, position, board):
         """ Checks if position on the board has been filled by another pawn """
-        if board.cell[position.x][position.y].owner != 0:
+        if board.cells[position.x][position.y].owner != 0:
             return True
         else:
             return False
@@ -82,8 +82,8 @@ class Pawn:
     def is_own_or_reached_region(self, position, board):
         """ Checks when you have entered, you cannot leave region and vice versa """
         if (
-            board.cell[position.x][position.y].region == self.pawn_owner
-            and board.cell[self.current_position.x][self.current_position.y].region == 0
+            board.cells[position.x][position.y].region == self.pawn_owner
+            and board.cells[self.current_position.x][self.current_position.y].region == 0
         ):
             return True
 
@@ -92,9 +92,9 @@ class Pawn:
             opponent = PLAYER_TWO_VALUE
 
         if (
-            board.cell[position.x][position.y].region == 0
-            or board.cell[position.x][position.y].region == self.pawn_owner
-        ) and board.cell[self.current_position.x][
+            board.cells[position.x][position.y].region == 0
+            or board.cells[position.x][position.y].region == self.pawn_owner
+        ) and board.cells[self.current_position.x][
             self.current_position.y
         ].region == opponent:
             return True

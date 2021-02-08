@@ -1,5 +1,5 @@
+from models.pawn import Pawn, Position
 from settings import *
-from pawn import Pawn, Position
 
 
 class Player:

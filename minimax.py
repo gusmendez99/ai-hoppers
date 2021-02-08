@@ -1,9 +1,9 @@
 import time
 import math
-from pawn import Position, Pawn
-from game import GameState
-from board import Board
-from player import Player
+from models.pawn import Position, Pawn
+from game.state import GameState
+from models.board import Board
+from models.player import Player
 
 from settings import *
 
