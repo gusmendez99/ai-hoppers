@@ -21,7 +21,6 @@ class Position:
     def __eq__(self, P):
         return (self.x == P.x) and (self.y == P.y)
 
-    # TODO: fix the representation as (y,x) instead of (x,y) on print
     def __str__(self):
         return f"({self.y}, {self.x})"
 
@@ -83,7 +82,8 @@ class Pawn:
         """ Checks when you have entered, you cannot leave region and vice versa """
         if (
             board.cells[position.x][position.y].region == self.pawn_owner
-            and board.cells[self.current_position.x][self.current_position.y].region == EMPTY_CELL_VALUE
+            and board.cells[self.current_position.x][self.current_position.y].region
+            == EMPTY_CELL_VALUE
         ):
             return True
 
@@ -102,4 +102,4 @@ class Pawn:
 
     def __str__(self):
         """ Prints on terminal """
-        return f"P{self.current_position}"
+        return f"{self.current_position}"

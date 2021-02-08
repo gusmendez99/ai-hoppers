@@ -13,18 +13,23 @@ class Board:
         """ Constructor """
         self.size = BOARD_SIZE
         self.cells = [
-            [Cell(EMPTY_CELL_VALUE, EMPTY_CELL_VALUE) for j in range(self.size)] for i in range(self.size)
+            [Cell(EMPTY_CELL_VALUE, EMPTY_CELL_VALUE) for j in range(self.size)]
+            for i in range(self.size)
         ]
         self.initialize_board()
 
     def print_board(self):
         """ Prints the current board state """
+        print("\n")
+        print("x ", *range(self.size))
+
         for i in range(self.size):
-            print("|", end="")
+            print("{} |".format(i), end="")
             for j in range(self.size):
                 print(self.cells[i][j], end="")
                 print("", end="|")
             print()
+        print("\n")
 
     def initialize_board(self):
         """ sets the initial state """

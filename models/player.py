@@ -50,7 +50,7 @@ class Player:
         """ Prints pawn info for each item on pawn array """
         index = 0
         for pawn in self.pawn_array:
-            print(f"PID{index}. {pawn}")
+            print(f"ID {index}. {pawn}")
             index += 1
 
     def get_pawn_id(self, position):

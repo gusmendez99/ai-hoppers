@@ -15,7 +15,7 @@ class GameManager:
      - opponent
      - board
      - mode (1 vs 1, or 1 vs AI Minimax)
-     - player_pawn_color = player 1 (green) or player 2 (red) choice
+     - player_pawn_color = player 1 (white) or player 2 (black) choice
     """
 
     def __init__(self, mode, player_pawn_color):
@@ -52,7 +52,7 @@ class GameManager:
 
     def minimax_move(self):
         """ Run Minimax bot on bot's turn """
-        print("PLAYER " + str(self.current_player.no_player) + " MINIMAX TURN!")
+        print("PLAYER {} - MINIMAX TURN!".format(self.current_player.no_player))
         # Minimax Process
         initial_time = time.time()
         current_state = GameState(self.board, self.current_player, self.opponent)
@@ -64,9 +64,9 @@ class GameManager:
             math.inf,
             self.current_player.no_player,
         )
-        deltaTime = time.time() - initial_time
-        self.total_time += deltaTime
-        print("Exec time = {} seconds".format(deltaTime))
+        delta_time = time.time() - initial_time
+        self.total_time += delta_time
+        print("Exec time = {} seconds".format(delta_time))
 
         self.assign_state(minimax_state)
         return self.board.check_winner(self.current_player.no_player)
@@ -86,9 +86,7 @@ class GameManager:
 
             # Minimax bot's turn
             if self.current_player.no_player != self.player_pawn_color:
-                print("PLAYER {} MINIMAX TURN!".format(self.current_player.no_player))
-                input("Begin minimax? ")
-                self.current_player.print_pawns()
+                print("PLAYER {} - MINIMAX TURN!".format(self.current_player.no_player))
 
                 # Minimax process
                 current_state = GameState(
@@ -104,8 +102,8 @@ class GameManager:
                     self.current_player.no_player,
                 )
                 self.assign_state(minimax_state)
-                deltaTime = time.time() - initial_time
-                print("Exec time = {} seconds".format(deltaTime))
+                delta_time = time.time() - initial_time
+                print("Exec time = {} seconds".format(delta_time))
 
                 print(
                     "PLAYER {} MINIMAX has played".format(self.current_player.no_player)
