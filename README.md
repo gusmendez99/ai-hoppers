@@ -1,5 +1,5 @@
 # hoppers-ai
-AI using Minimax with Alpha-Beta Pruning
+Hoppers AI agent, using Minimax with Alpha-Beta Pruning
 
 ### Prerequisites
 Python 3
