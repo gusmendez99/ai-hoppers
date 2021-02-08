@@ -9,14 +9,14 @@ class Player:
     - pawn_array
     """
 
-    def __init__(self, no_player, board_size):
+    def __init__(self, no_player):
         """ Player Constructor """
         self.no_player = no_player
         self.pawn_array = []
         if no_player == PLAYER_ONE_VALUE:
-            self.set_player_one(board_size)
+            self.set_player_one(BOARD_SIZE)
         else:
-            self.set_player_two(board_size)
+            self.set_player_two(BOARD_SIZE)
 
     def set_player_one(self, board_size):
         """ Sets the pawn values for player 1 at the start of the game """
