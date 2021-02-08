@@ -83,16 +83,16 @@ class Pawn:
         """ Checks when you have entered, you cannot leave region and vice versa """
         if (
             board.cells[position.x][position.y].region == self.pawn_owner
-            and board.cells[self.current_position.x][self.current_position.y].region == 0
+            and board.cells[self.current_position.x][self.current_position.y].region == EMPTY_CELL_VALUE
         ):
             return True
 
         opponent = PLAYER_TWO_VALUE
         if self.pawn_owner == PLAYER_TWO_VALUE:
-            opponent = PLAYER_TWO_VALUE
+            opponent = PLAYER_ONE_VALUE
 
         if (
-            board.cells[position.x][position.y].region == 0
+            board.cells[position.x][position.y].region == EMPTY_CELL_VALUE
             or board.cells[position.x][position.y].region == self.pawn_owner
         ) and board.cells[self.current_position.x][
             self.current_position.y

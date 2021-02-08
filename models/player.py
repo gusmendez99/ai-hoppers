@@ -61,7 +61,7 @@ class Player:
 
         return -1
 
-    def move_pown(self, pawn_id, position, board):
+    def move_pawn(self, pawn_id, position, board):
         self.pawn_array[pawn_id].move(position, board)
 
     def get_possible_moves(self, pawn_id, board):

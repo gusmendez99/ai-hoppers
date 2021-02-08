@@ -82,7 +82,7 @@ def minimax(game_state, depth, total_time, alpha, beta, max_entity):
                 new_game_state = GameState(
                     game_state.board, game_state.current_player, game_state.opponent
                 )
-                new_game_state.current_player.movePion(
+                new_game_state.current_player.move_pawn(
                     index, move, new_game_state.board
                 )
 
@@ -126,7 +126,7 @@ def minimax(game_state, depth, total_time, alpha, beta, max_entity):
                 new_game_state = GameState(
                     game_state.board, game_state.current_player, game_state.opponent
                 )
-                new_game_state.current_player.movePion(
+                new_game_state.current_player.move_pawn(
                     index, move, new_game_state.board
                 )
 

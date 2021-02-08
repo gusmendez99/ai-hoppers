@@ -13,7 +13,7 @@ class Board:
         """ Constructor """
         self.size = BOARD_SIZE
         self.cells = [
-            [Cell(EMPTY_CELL_VALUE) for j in range(self.size)] for i in range(self.size)
+            [Cell(EMPTY_CELL_VALUE, EMPTY_CELL_VALUE) for j in range(self.size)] for i in range(self.size)
         ]
         self.initialize_board()
 
@@ -36,14 +36,14 @@ class Board:
         for i in range(middle):
             for j in range(middle):
                 if i + j < middle:
-                    self.cells[i][j].set_owner(PLAYER_ONE_VALUE)
+                    self.cells[i][j].set_region(PLAYER_ONE_VALUE)
 
     def set_player_two_region(self):
         middle = int(self.size / 2)
         for i in range(middle, self.size):
             for j in range(middle, i + 1):
                 offset = i - j
-                self.cells[i][self.size - 1 - offset].set_owner(PLAYER_TWO_VALUE)
+                self.cells[i][self.size - 1 - offset].set_region(PLAYER_TWO_VALUE)
 
     def set_pawns_position(self, player1, player2):
         """ assign each of the positions of player1 and player2's pawns to the board cells """
@@ -66,7 +66,7 @@ class Board:
                     if (
                         self.cells[i][self.size - 1 - offset].owner == PLAYER_TWO_VALUE
                     ) or (
-                        self.cells[i][self.size - 1 - temp].owner == EMPTY_CELL_VALUE
+                        self.cells[i][self.size - 1 - offset].owner == EMPTY_CELL_VALUE
                     ):
                         return False
             return True
