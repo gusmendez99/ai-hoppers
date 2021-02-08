@@ -23,7 +23,7 @@ class Position:
 
     # TODO: fix the representation as (y,x) instead of (x,y) on print
     def __str__(self):
-        return f"({self.x},{self.y})"
+        return f"({self.y}, {self.x})"
 
 
 class Pawn:
@@ -102,4 +102,4 @@ class Pawn:
 
     def __str__(self):
         """ Prints on terminal """
-        return f"P (player {self.pawn_owner}): {self.current_position}"
+        return f"P{self.current_position}"
