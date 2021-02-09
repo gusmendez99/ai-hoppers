@@ -32,22 +32,22 @@ class Pawn:
      - current_position
     """
 
-    def __init__(self, owner, current_position):
+    def __init__(self, player_owner, current_position):
         """ Constructor """
-        self.pawn_owner = owner
+        self.pawn_owner = player_owner
         self.current_position = current_position
 
     def move(self, position, board):
         """ Move the position from current_position to a new position on the board """
         if self.is_valid_move(position, board):
             # set cell to be empty, i.e. no pawns occupy (empty)
-            board.cells[self.current_position.x][self.current_position.y].set_owner(
+            board.cells[self.current_position.x][self.current_position.y].set_player_owner(
                 EMPTY_CELL_VALUE
             )
 
             # assign new position
             self.current_position = position
-            board.cells[position.x][position.y].set_owner(self.pawn_owner)
+            board.cells[position.x][position.y].set_player_owner(self.pawn_owner)
 
     def is_valid_move(self, position, board):
         # position out of range
@@ -73,7 +73,7 @@ class Pawn:
 
     def has_owner(self, position, board):
         """ Checks if position on the board has been filled by another pawn """
-        if board.cells[position.x][position.y].owner != 0:
+        if board.cells[position.x][position.y].player_owner != 0:
             return True
         else:
             return False

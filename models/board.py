@@ -33,18 +33,15 @@ class Board:
 
     def initialize_board(self):
         """ sets the initial state """
-        self.set_player_one_region()
-        self.set_player_two_region()
+        self.set_player_regions()
 
-    def set_player_one_region(self):
+    def set_player_regions(self):
         middle = int(self.size / 2)
         for i in range(middle):
             for j in range(middle):
                 if i + j < middle:
                     self.cells[i][j].set_region(PLAYER_ONE_VALUE)
 
-    def set_player_two_region(self):
-        middle = int(self.size / 2)
         for i in range(middle, self.size):
             for j in range(middle, i + 1):
                 offset = i - j
@@ -53,36 +50,45 @@ class Board:
     def set_pawns_position(self, player1, player2):
         """ assign each of the positions of player1 and player2's pawns to the board cells """
         for pawn in player1.pawn_array:
-            self.cells[pawn.current_position.x][pawn.current_position.y].set_owner(
+            self.cells[pawn.current_position.x][pawn.current_position.y].set_player_owner(
                 PLAYER_ONE_VALUE
             )
         for pawn in player2.pawn_array:
-            self.cells[pawn.current_position.x][pawn.current_position.y].set_owner(
+            self.cells[pawn.current_position.x][pawn.current_position.y].set_player_owner(
                 PLAYER_TWO_VALUE
             )
 
     def check_winner(self, no_player):
         """ Checks if game has ended - someone won """
+        middle = int(self.size / 2)
+        at_least_one_reached_opponent_region = False
+
         if no_player == PLAYER_ONE_VALUE:
-            middle = int(self.size / 2)
             for i in range(middle, self.size):
                 for j in range(middle, i + 1):
                     offset = i - j
-                    if (
-                        self.cells[i][self.size - 1 - offset].owner == PLAYER_TWO_VALUE
-                    ) or (
-                        self.cells[i][self.size - 1 - offset].owner == EMPTY_CELL_VALUE
-                    ):
+                    # or (
+                    #    self.cells[i][self.size - 1 - offset].player_owner == EMPTY_CELL_VALUE
+                    #):
+                    if self.cells[i][self.size - 1 - offset].player_owner == EMPTY_CELL_VALUE:
                         return False
+                    if self.cells[i][self.size - 1 - offset].player_owner == PLAYER_ONE_VALUE:
+                        at_least_one_reached_opponent_region = True
+
+            if not at_least_one_reached_opponent_region: return False
             return True
 
         elif no_player == PLAYER_TWO_VALUE:
-            middle = int(self.size / 2)
             for i in range(middle):
                 for j in range(middle):
                     if i + j < middle:
-                        if (self.cells[i][j].owner == PLAYER_ONE_VALUE) or (
-                            self.cells[i][j].owner == EMPTY_CELL_VALUE
-                        ):
+                        #if () or (
+                        #    self.cells[i][j].player_owner == EMPTY_CELL_VALUE
+                        #):
+                        if self.cells[i][j].player_owner == EMPTY_CELL_VALUE:
                             return False
+                        if self.cells[i][j].player_owner == PLAYER_TWO_VALUE:
+                            at_least_one_reached_opponent_region = True
+
+            if not at_least_one_reached_opponent_region: return False
             return True

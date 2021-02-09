@@ -11,11 +11,10 @@ def main_menu():
     print("1. P1 vs P2")
     print("2. Player vs AI Minimax")
 
-    # TODO: let the user enter coordinates, and no longer the ID
-    # TODO: validate when pawn has no possible moves (empty move list)
     # TODO: show Minimax start and final coords selected, and the taken path
     # TODO: add minimax vs minimax game mode
-    # TODO: validate winner regardless of the color of the pawns, but by the full target (goal) region
+    # TODO: validate when pawn has no possible moves (empty move list)
+    # TODO: let the user enter coordinates, and no longer the ID
 
     mode = int(input("Enter the desired game mode options: "))
     pawns_color = 0
