@@ -22,7 +22,8 @@ $ pip3 install -r requirements.txt
 ### Game Modes
 - [x] P1 vs. P2
 - [x] P vs. Minimax AI Bot
-- [ ] Minimax Bot vs. Minimax Bot
+- [x] P vs. Minimax LS AI Bot
+- [x] Minimax Bot vs. Minimax LS Bot
 
 ### Strategy
 Win the game and give no moves to the opponent

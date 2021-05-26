@@ -10,6 +10,8 @@ def main_menu():
     print("Welcome to Hoppers AI!")
     print("1. P1 vs P2")
     print("2. Player vs AI Minimax")
+    print("3. Player vs AI Minimax LS")
+    print("4. AI Minimax vs AI Minimax LS")
 
     # TODO: show Minimax start and final coords selected, and the taken path
     # TODO: add minimax vs minimax game mode
@@ -19,7 +21,7 @@ def main_menu():
     mode = int(input("Enter the desired game mode options: "))
     pawns_color = 0
 
-    if mode != 1:
+    if mode != 1 or mode != 4:
         pawns_color = int(
             input(
                 "Choose {} ({}) or {} ({}): ".format(
