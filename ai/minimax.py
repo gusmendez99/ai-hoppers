@@ -194,9 +194,9 @@ def minimax_local_search(game_state, depth, total_time, alpha, beta, max_entity)
     # base: returns game_state and eval_function if time is exceeded, depth == 0 or game has ended
     if ((depth == 0) or (time.time() > total_time) or (has_game_ended)):
         if (has_game_ended) and (game_state.current_player.no_player == max_entity):
-            extra_points = 10
+            extra_points = 20
         elif (has_game_ended) and (game_state.current_player.no_player != max_entity):
-            extra_points = -10
+            extra_points = -20
         
         return (
             game_state, 

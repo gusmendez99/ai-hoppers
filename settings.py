@@ -8,8 +8,8 @@ PLAYER_ONE_PAWN_COLOR = "White - Top"
 PLAYER_TWO_PAWN_COLOR = "Black - Bottom"
 
 
-TIME_LIMIT = 10  # seconds
-MINIMAX_DEPTH = 3
+TIME_LIMIT = 7  # seconds
+MINIMAX_DEPTH = 4
 
 # Game Modes
 P_VS_P_MODE = 1
